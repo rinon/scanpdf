@@ -75,12 +75,12 @@ class ScanPdf(object):
     def run_scan(self):
         device = os.environ['SCANBD_DEVICE']
         self.cmd('logger -t "scanbd: " "Begin of scan "')
-        c = ['scanadf',
+        c = ['scanimage',
                 '-d "%s"' % device,
                 '--source "ADF Duplex"',
                 '--mode Color',
                 '--resolution %sdpi' % self.dpi,
-                '-o %s/page_%%04d' % self.tmp_dir,
+                '--batch=%s/page_%%04d' % self.tmp_dir,
                 '-y 876',
                 '--page-height 376',
                 ]
